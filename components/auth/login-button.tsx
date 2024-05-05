@@ -15,7 +15,7 @@ const LoginButton: FC<LoginButtonProps> = ({
   children,
 }) => {
   const router = useRouter();
-  const onClick = () => router.push('/auth/login');
+  const onClick = () => router.push('/login');
   return (
     <span
       onClick={onClick}

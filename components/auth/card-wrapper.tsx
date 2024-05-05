@@ -28,7 +28,9 @@ const CardWrapper: FC<CardWrapperProps> = ({
   children,
 }) => {
   return (
-    <Card className="w-[400px] shadow-md">
+    <Card
+      className="w-[400px] bg-black border-0 bg-opacity-20 shadow-xl
+      backdrop-blur-md text-white">
       <CardHeader>
         <Header label={headerLabel} />
         <CardContent>{children}</CardContent>

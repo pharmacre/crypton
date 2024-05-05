@@ -13,7 +13,7 @@ const BackButton: FC<BackButtonProps> = ({ label, href }) => {
   return (
     <Button
       variant="link"
-      className="font-normal w-full"
+      className="font-normal w-full text-white"
       size="sm"
       asChild>
       <Link href={href}>{label}</Link>

@@ -9,13 +9,13 @@ const Social = () => {
     <Container className="gap-x-2">
       <Button
         size="lg"
-        className="w-full"
+        className="w-full bg-black/40 border-0"
         variant="outline">
         <FcGoogle className="w-5 h-5" />
       </Button>
       <Button
         size="lg"
-        className="w-full"
+        className="w-full bg-black/40 border-0"
         variant="outline">
         <FaGithub className="w-5 h-5" />
       </Button>

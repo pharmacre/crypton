@@ -10,7 +10,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ label }) => {
   return (
     <Container className="flex-col gap-2">
-      <h1>Auth</h1>
+      <h1>Authorization</h1>
       <p className="text-muted-foreground text-sm">{label}</p>
     </Container>
   );

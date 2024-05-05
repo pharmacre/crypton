@@ -78,7 +78,7 @@ body,
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-gradient-to-b from-zinc-900 to-emerald-900 text-foreground;
     }
 
     h1 {

@@ -4,7 +4,7 @@ import Container from '@/layouts/container';
 
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center justify-between bg-black">
+    <main className="flex h-full flex-col items-center justify-between">
       <Container className="flex-col gap-6">
         <h1 className="text-6xl font-semibold text-white drop-shadow-md">
           Auth
