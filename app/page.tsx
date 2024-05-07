@@ -7,7 +7,7 @@ export default function Home() {
     <main className="flex h-full flex-col items-center justify-between">
       <Container className="flex-col gap-6">
         <h1 className="text-6xl font-semibold text-white drop-shadow-md">
-          Auth
+          Authentication
         </h1>
         <p className="text-white text-lg">A simple authentication service</p>
         <div>
