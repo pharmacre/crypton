@@ -1,8 +1,5 @@
-'use client';
-
-import React, { useState, useTransition } from 'react';
+import React, { FC, useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
 import { RegisterSchema } from '@/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CardWrapper from '@/components/auth/card-wrapper';
@@ -20,14 +17,15 @@ import FormError from '@/components/form-error';
 import FormSuccess from '@/components/form-success';
 import { register } from '@/actions/register';
 import useAuth from '@/hooks/useAuth';
+import { HooverFormTypes, RegisterFormTypes } from '@/types/form-types';
 
-const RegisterForm = () => {
+const RegisterForm: FC<HooverFormTypes> = ({ onMouseOver, onMouseOut }) => {
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
   const [isPending, startTransition] = useTransition();
   const { signUpWithCredential } = useAuth();
 
-  const form = useForm<z.infer<typeof RegisterSchema>>({
+  const form = useForm<RegisterFormTypes>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
       email: '',
@@ -36,7 +34,7 @@ const RegisterForm = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
+  const onSubmit = (values: RegisterFormTypes) => {
     setError('');
     setSuccess('');
     signUpWithCredential(values);
@@ -52,6 +50,8 @@ const RegisterForm = () => {
 
   return (
     <CardWrapper
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
       headerLabel="Create an account"
       backButtonLabel="Already have an account"
       backButtonHref="/login"
@@ -60,7 +60,7 @@ const RegisterForm = () => {
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-6">
-          <div className="space-y-4">
+          <div className="space-y-2 md:space-y-4">
             <FormField
               name="name"
               control={form.control}
