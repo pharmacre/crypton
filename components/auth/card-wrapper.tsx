@@ -17,6 +17,8 @@ interface CardWrapperProps {
   headerLabel: string;
   backButtonLabel: string;
   backButtonHref: string;
+  onMouseOut?: () => void;
+  onMouseOver?: () => void;
   showSocial?: boolean;
 }
 
@@ -26,11 +28,16 @@ const CardWrapper: FC<CardWrapperProps> = ({
   showSocial,
   headerLabel,
   children,
+  onMouseOut,
+  onMouseOver
 }) => {
+
   return (
     <Card
-      className="w-[400px] bg-black border-0 bg-opacity-20 shadow-xl
-      backdrop-blur-md text-white">
+      onMouseOut={onMouseOut}
+      onMouseOver={onMouseOver}
+      className="w-full md:w-[400px] bg-gradient-to-b from-zinc-800 to-neutral-900
+      border-0 backdrop-blur-md text-white">
       <CardHeader>
         <Header label={headerLabel} />
         <CardContent>{children}</CardContent>

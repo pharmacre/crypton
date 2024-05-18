@@ -6,16 +6,14 @@ interface ContainerProps {
   className?: string;
 }
 
-const Container: FC<ContainerProps> = ({ children, className }) => {
-  return (
-    <div
-      className={cn(
-        'flex h-full w-full justify-center items-center',
-        className
-      )}>
-      {children}
-    </div>
-  );
-};
+const Container: FC<ContainerProps> = ({ children, className }) => (
+  <div
+    className={cn(
+      'flex h-full w-full justify-center items-center',
+      className,
+    )}>
+    {children}
+  </div>
+);
 
 export default Container;
