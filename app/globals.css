@@ -78,10 +78,35 @@ body,
     }
 
     body {
-        @apply bg-gradient-to-b from-zinc-900 to-emerald-900 text-foreground;
+        @apply bg-gradient-to-b from-zinc-900 to-neutral-950 text-foreground
     }
 
     h1 {
-        @apply text-3xl font-semibold
+        @apply text-xl md:text-3xl font-semibold
+    }
+
+    p {
+        @apply text-muted-foreground text-xs md:text-sm
+    }
+
+    label {
+        @apply text-xs md:text-sm font-medium leading-none
+    }
+
+    .bg-animate {
+        background-size: 1000%;
+        -webkit-animation: gradient-wave 10s ease infinite;
+        -moz-animation: gradient-wave 10s ease infinite;
+        animation: gradient-wave 10s ease infinite;
+    }
+
+    @keyframes gradient-wave {
+        0%,
+        100% {
+            background-position: 0 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
     }
 }

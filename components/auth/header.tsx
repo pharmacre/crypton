@@ -7,13 +7,11 @@ interface HeaderProps {
   label: string;
 }
 
-const Header: FC<HeaderProps> = ({ label }) => {
-  return (
-    <Container className="flex-col gap-2">
-      <h1>Authorization</h1>
-      <p className="text-muted-foreground text-sm">{label}</p>
-    </Container>
-  );
-};
+const Header: FC<HeaderProps> = ({ label }) => (
+  <Container className="flex-col gap-2">
+    <h1>Authorization</h1>
+    <p>{label}</p>
+  </Container>
+);
 
 export default Header;

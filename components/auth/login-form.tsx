@@ -1,8 +1,5 @@
-'use client';
-
-import React, { useState, useTransition } from 'react';
+import React, { FC, useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
 import { LoginSchema } from '@/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CardWrapper from '@/components/auth/card-wrapper';
@@ -20,14 +17,15 @@ import FormError from '@/components/form-error';
 import FormSuccess from '@/components/form-success';
 import { login } from '@/actions/login';
 import useAuth from '@/hooks/useAuth';
+import { HooverFormTypes, LoginFormTypes } from '@/types/form-types';
 
-const LoginForm = () => {
+const LoginForm: FC<HooverFormTypes> = ({ onMouseOver, onMouseOut }) => {
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
   const [isPending, startTransition] = useTransition();
   const { signInWithCredential } = useAuth();
 
-  const form = useForm<z.infer<typeof LoginSchema>>({
+  const form = useForm<LoginFormTypes>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: '',
@@ -35,10 +33,10 @@ const LoginForm = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: LoginFormTypes) => {
     setError('');
     setSuccess('');
-    signInWithCredential(values)
+    signInWithCredential(values);
 
     startTransition(() => {
       login(values)
@@ -51,6 +49,8 @@ const LoginForm = () => {
 
   return (
     <CardWrapper
+      onMouseOut={onMouseOut}
+      onMouseOver={onMouseOver}
       headerLabel="Welcome back"
       backButtonLabel="Don't have an account"
       backButtonHref="/register"
@@ -59,7 +59,7 @@ const LoginForm = () => {
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-6">
-          <div className="space-y-4">
+          <div className="space-y-2 md:space-y-4">
             <FormField
               name="email"
               control={form.control}
